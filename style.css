@@ -62,3 +62,28 @@ body {
 .highlight {
   background: rgba(0,212,255,0.1);
 }
+.project-card, .card {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover, .card:hover {
+  transform: translateY(-6px);
+  border-color: #00d4ff;
+  box-shadow: 0 0 20px rgba(0,212,255,0.1);
+}
+
+h1, h2 {
+  letter-spacing: 1px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.tagline {
+  color: #00d4ff;
+  margin-bottom: 10px;
+}
