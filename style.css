@@ -70,25 +70,33 @@ body {
   margin-top: 25px;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
   padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
   background: var(--primary);
   color: white;
-  text-decoration: none;
-  border-radius: 8px;
   margin-right: 10px;
 }
 
 .btn-primary:hover {
+  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
 }
 
 .btn-secondary {
-  padding: 12px 26px;
   border: 1px solid var(--border);
   color: var(--text);
-  text-decoration: none;
-  border-radius: 8px;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 /* ===============================
@@ -103,6 +111,21 @@ body {
 .section h2 {
   border-left: 4px solid var(--primary);
   padding-left: 12px;
+  margin-bottom: 20px;
+}
+
+/* ===============================
+   GRID (RESPONSIVE)
+================================ */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card,
+.project-card {
+  flex: 1 1 280px;
 }
 
 /* ===============================
@@ -114,7 +137,6 @@ body {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px;
-  margin: 12px;
   transition: 0.3s;
 }
 
@@ -129,14 +151,6 @@ body {
 }
 
 /* ===============================
-   GRID
-================================ */
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-/* ===============================
    AWARDS + CERT LINKS
 ================================ */
 .award {
@@ -147,14 +161,29 @@ body {
 
 .cert-link {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 14px;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.cert-link:hover {
+  text-decoration: underline;
+  transform: translateX(3px);
+}
+
+/* ===============================
+   CONTACT (CARD STYLE)
+================================ */
+.card a {
   color: var(--primary);
   text-decoration: none;
   font-weight: 500;
 }
 
-.cert-link:hover {
+.card a:hover {
   text-decoration: underline;
 }
 
