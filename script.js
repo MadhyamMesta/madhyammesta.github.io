@@ -1,11 +1,15 @@
 const elements = document.querySelectorAll('.fade-in');
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
+      
+      const delay = entry.target.dataset.delay || 0;
+
       setTimeout(() => {
         entry.target.classList.add('visible');
-      }, index * 100);
+      }, delay);
+
       observer.unobserve(entry.target);
     }
   });
@@ -13,4 +17,7 @@ const observer = new IntersectionObserver((entries) => {
   threshold: 0.15
 });
 
-elements.forEach(el => observer.observe(el));
+elements.forEach((el, index) => {
+  el.dataset.delay = index * 120; // smooth stagger
+  observer.observe(el);
+});
