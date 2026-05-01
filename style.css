@@ -21,6 +21,11 @@ body {
   line-height: 1.6;
 }
 
+/* Smooth scrolling (premium feel) */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Improve typography hierarchy */
 h1 {
   font-weight: 700;
@@ -136,7 +141,7 @@ h3 {
 .section {
   max-width: 1000px;
   margin: auto;
-  padding: 80px 20px; /* increased spacing */
+  padding: 80px 20px;
 }
 
 .section h2 {
@@ -329,15 +334,23 @@ footer {
 }
 
 /* ===============================
-   ANIMATION
+   ANIMATION (FIXED + FAIL-SAFE)
 ================================ */
+
+/* Default: visible (so page never breaks) */
 .fade-in {
-  opacity: 0;
-  transform: translateY(25px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.6s ease;
 }
 
-.fade-in.visible {
+/* Only apply animation when JS is active */
+.js-enabled .fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+}
+
+.js-enabled .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
