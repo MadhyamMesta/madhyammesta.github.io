@@ -1,13 +1,16 @@
 /* ===============================
-   ROOT COLORS
+   ROOT COLORS (UPGRADED)
 ================================ */
 :root {
   --primary: #2563eb;
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --text: #111;
-  --subtext: #555;
-  --border: #e5e7eb;
+  --primary-soft: rgba(37, 99, 235, 0.1);
+  --bg: #f7f9fc;
+  --card: rgba(255, 255, 255, 0.75);
+  --glass: rgba(255, 255, 255, 0.6);
+  --text: #0f172a;
+  --subtext: #475569;
+  --border: rgba(0, 0, 0, 0.06);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 /* ===============================
@@ -16,24 +19,22 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--bg);
+  background: linear-gradient(to bottom, #f8fafc, #eef2ff);
   color: var(--text);
   line-height: 1.6;
 }
 
-/* Smooth scrolling (premium feel) */
 html {
   scroll-behavior: smooth;
 }
 
-/* Improve typography hierarchy */
 h1 {
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 28px;
 }
 
 h3 {
@@ -41,23 +42,21 @@ h3 {
 }
 
 /* ===============================
-   HERO
+   HERO (STRIPE STYLE)
 ================================ */
 .hero {
   text-align: center;
-  padding: 110px 20px 80px;
+  padding: 120px 20px 90px;
   background:
-    radial-gradient(circle at 15% 20%, #dbeafe 0%, transparent 40%),
-    radial-gradient(circle at 85% 30%, #bfdbfe 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, #e0f2fe 0%, transparent 40%),
-    var(--bg);
+    radial-gradient(circle at 10% 20%, #dbeafe 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, #c7d2fe 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, #e0f2fe 0%, transparent 40%);
 }
 
-/* NEW: premium hero title */
 .hero-title {
-  font-size: 46px;
-  margin: 12px 0;
-  background: linear-gradient(90deg, #2563eb, #1e40af);
+  font-size: 50px;
+  margin: 10px 0;
+  background: linear-gradient(90deg, #2563eb, #1e3a8a);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -66,22 +65,20 @@ h3 {
   width: 130px;
   border-radius: 50%;
   border: 4px solid white;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow);
 }
 
-/* NEW: badge-style tagline */
 .badge {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.1);
-  padding: 6px 12px;
-  border-radius: 20px;
+  background: var(--primary-soft);
+  padding: 6px 14px;
+  border-radius: 999px;
 }
 
 .tagline {
   color: var(--primary);
   font-size: 14px;
-  letter-spacing: 1px;
-  margin-top: 6px;
+  letter-spacing: 0.8px;
 }
 
 .intro {
@@ -93,7 +90,6 @@ h3 {
 .highlight-line {
   color: var(--primary);
   font-weight: 500;
-  margin-top: 10px;
 }
 
 /* ===============================
@@ -106,54 +102,51 @@ h3 {
 .btn-primary,
 .btn-secondary {
   padding: 12px 28px;
-  border-radius: 10px;
+  border-radius: 999px;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.25s ease;
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
   color: white;
-  margin-right: 10px;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secondary {
   border: 1px solid var(--border);
-  color: var(--text);
   background: white;
 }
 
 .btn-secondary:hover {
+  transform: translateY(-2px);
   border-color: var(--primary);
   color: var(--primary);
-  transform: translateY(-2px);
 }
 
 /* ===============================
    SECTIONS
 ================================ */
 .section {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 .section h2 {
   border-left: 4px solid var(--primary);
   padding-left: 12px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .section-intro {
   color: var(--subtext);
-  margin-bottom: 20px;
-  max-width: 700px;
+  margin-bottom: 30px;
 }
 
 /* ===============================
@@ -162,75 +155,60 @@ h3 {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }
 
 /* ===============================
-   CARDS
+   CARDS (GLASSMORPHISM)
 ================================ */
 .card,
 .project-card {
   flex: 1 1 280px;
+  backdrop-filter: blur(12px);
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
+  border-radius: 18px;
+  padding: 22px;
   transition: all 0.3s ease;
-  position: relative;
+  box-shadow: var(--shadow);
 }
 
 .card:hover,
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* Accent line */
+.project-card::before {
+  content: "";
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb, #60a5fa);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 18px 18px 0 0;
 }
 
 /* ===============================
    PROJECTS
 ================================ */
-.project-card h3 {
-  margin-top: 0;
-}
-
 .project-card p {
   margin: 6px 0;
 }
 
 .project-card ul {
   padding-left: 18px;
-  margin: 10px 0;
-}
-
-.project-card li {
-  margin-bottom: 6px;
-}
-
-/* NEW: top accent line */
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background: var(--primary);
-  opacity: 0.8;
-  border-radius: 16px 16px 0 0;
 }
 
 .project-link {
-  display: inline-block;
   margin-top: 12px;
+  display: inline-block;
   color: var(--primary);
-  text-decoration: none;
   font-weight: 500;
 }
 
-.project-link:hover {
-  text-decoration: underline;
-}
-
-/* Highlight project */
 .highlight-project {
   border: 2px solid var(--primary);
   background: #f0f7ff;
@@ -246,81 +224,48 @@ h3 {
 }
 
 .cert-link {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 14px;
   color: var(--primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.cert-link:hover {
-  text-decoration: underline;
-  transform: translateX(3px);
 }
 
 /* ===============================
-   CONTACT (ENHANCED WITH ICONS)
+   CONTACT (PREMIUM CARDS)
 ================================ */
-.contact-section {
-  text-align: center;
-}
-
-.contact-intro {
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  color: var(--subtext);
-}
-
 .contact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
+  gap: 24px;
 }
 
 .contact-card {
-  display: block;
-  padding: 22px;
-  border-radius: 14px;
-  background: var(--card);
+  padding: 26px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  text-align: center;
   text-decoration: none;
   color: var(--text);
-  border: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
-/* NEW: icons */
 .contact-card i {
-  font-size: 26px;
+  font-size: 28px;
   color: var(--primary);
   margin-bottom: 10px;
-  display: block;
-}
-
-.contact-card h3 {
-  margin-bottom: 6px;
-}
-
-.contact-card p {
-  font-size: 14px;
-  color: var(--subtext);
 }
 
 .contact-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-  border-color: var(--primary);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 /* ===============================
-   HIGHLIGHT SECTION
+   HIGHLIGHT
 ================================ */
 .highlight {
-  background: #eef6ff;
-  border-radius: 14px;
-  padding: 24px;
+  background: linear-gradient(135deg, #eef6ff, #f0f9ff);
+  border-radius: 16px;
+  padding: 28px;
 }
 
 /* ===============================
@@ -330,21 +275,15 @@ footer {
   text-align: center;
   padding: 30px;
   color: var(--subtext);
-  font-size: 14px;
 }
 
 /* ===============================
-   ANIMATION (FIXED + FAIL-SAFE)
+   SAFE ANIMATION
 ================================ */
-
-/* Default: visible (so page never breaks) */
 .fade-in {
   opacity: 1;
-  transform: translateY(0);
-  transition: all 0.6s ease;
 }
 
-/* Only apply animation when JS is active */
 .js-enabled .fade-in {
   opacity: 0;
   transform: translateY(25px);
