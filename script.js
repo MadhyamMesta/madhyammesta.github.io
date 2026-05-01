@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ✅ IMPORTANT: enables animation mode from CSS
+  document.documentElement.classList.add("js-enabled");
+
   const elements = document.querySelectorAll('.fade-in');
 
-  if (!elements.length) return; // safety check
+  if (!elements.length) return;
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
