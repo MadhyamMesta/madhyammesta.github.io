@@ -54,7 +54,8 @@ h3 {
 }
 
 .hero-title {
-  font-size: 50px;
+  font-size: 56px;
+  line-height: 1.1;
   margin: 10px 0;
   background: linear-gradient(90deg, #2563eb, #1e3a8a);
   -webkit-background-clip: text;
@@ -135,7 +136,8 @@ h3 {
 .section {
   max-width: 1100px;
   margin: auto;
-  padding: 90px 20px;
+  padding: 110px 20px; /* increased spacing */
+  border-bottom: 1px solid rgba(0,0,0,0.04); /* subtle divider */
 }
 
 .section h2 {
@@ -167,16 +169,17 @@ h3 {
   backdrop-filter: blur(12px);
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 22px;
+  border-radius: 20px;
+  padding: 24px;
   transition: all 0.3s ease;
   box-shadow: var(--shadow);
+  position: relative;
 }
 
 .card:hover,
 .project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
 }
 
 /* Accent line */
@@ -240,7 +243,7 @@ h3 {
   padding: 26px;
   border-radius: 16px;
   backdrop-filter: blur(12px);
-  background: var(--glass);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
   border: 1px solid var(--border);
   text-align: center;
   text-decoration: none;
@@ -292,4 +295,24 @@ footer {
 .js-enabled .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ===============================
+   EXTRA POLISH (STRIPE FEEL)
+================================ */
+
+/* smoother text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* subtle hover glow */
+.card:hover,
+.project-card:hover {
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* better spacing between cards */
+.project-card + .project-card {
+  margin-top: 10px;
 }
