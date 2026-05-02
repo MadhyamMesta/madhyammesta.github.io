@@ -1,16 +1,23 @@
 /* ===============================
-   ROOT COLORS (UPGRADED)
+   ROOT COLORS (ART SYSTEM)
 ================================ */
 :root {
-  --primary: #2563eb;
-  --primary-soft: rgba(37, 99, 235, 0.1);
-  --bg: #f7f9fc;
-  --card: rgba(255, 255, 255, 0.75);
-  --glass: rgba(255, 255, 255, 0.6);
-  --text: #0f172a;
-  --subtext: #475569;
-  --border: rgba(0, 0, 0, 0.06);
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --bg-main: #05070d;
+  --bg-secondary: #0b1020;
+
+  --purple: #6a00ff;
+  --blue: #0077ff;
+
+  --yellow: #ffd84d;
+  --orange: #ff9a00;
+
+  --text-main: #ffffff;
+  --text-sub: #aab0c0;
+
+  --glass: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+
+  --glow-yellow: rgba(255, 216, 77, 0.4);
 }
 
 /* ===============================
@@ -19,45 +26,62 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: linear-gradient(to bottom, #f8fafc, #eef2ff);
-  color: var(--text);
+  background: var(--bg-main);
+  color: var(--text-main);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-h1 {
-  font-weight: 700;
-  letter-spacing: -0.5px;
+h1, h2, h3 {
+  color: var(--text-main);
 }
 
-h2 {
-  font-size: 28px;
+p {
+  color: var(--text-sub);
 }
 
-h3 {
-  font-size: 18px;
+/* 🌌 Nebula overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 80%, rgba(255, 216, 77, 0.12), transparent 50%),
+    radial-gradient(circle at 30% 40%, rgba(106, 0, 255, 0.15), transparent 50%);
+  z-index: -1;
 }
 
 /* ===============================
-   HERO (STRIPE STYLE)
+   CANVAS BACKGROUND
+================================ */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+/* ===============================
+   HERO (NEBULA STYLE)
 ================================ */
 .hero {
   text-align: center;
   padding: 120px 20px 90px;
-  background:
-    radial-gradient(circle at 10% 20%, #dbeafe 0%, transparent 40%),
-    radial-gradient(circle at 90% 10%, #c7d2fe 0%, transparent 40%),
-    radial-gradient(circle at 50% 90%, #e0f2fe 0%, transparent 40%);
+  background: transparent;
 }
 
 .hero-title {
   font-size: 56px;
   line-height: 1.1;
   margin: 10px 0;
-  background: linear-gradient(90deg, #2563eb, #1e3a8a);
+  background: linear-gradient(90deg, #fff, var(--yellow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -65,19 +89,20 @@ h3 {
 .profile-pic {
   width: 130px;
   border-radius: 50%;
-  border: 4px solid white;
-  box-shadow: var(--shadow);
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 25px rgba(255,255,255,0.1);
 }
 
 .badge {
   display: inline-block;
-  background: var(--primary-soft);
+  background: rgba(255,255,255,0.05);
   padding: 6px 14px;
   border-radius: 999px;
+  border: 1px solid var(--border);
 }
 
 .tagline {
-  color: var(--primary);
+  color: var(--yellow);
   font-size: 14px;
   letter-spacing: 0.8px;
 }
@@ -85,12 +110,10 @@ h3 {
 .intro {
   max-width: 720px;
   margin: 20px auto;
-  color: var(--subtext);
 }
 
 .highlight-line {
-  color: var(--primary);
-  font-weight: 500;
+  color: var(--yellow);
 }
 
 /* ===============================
@@ -109,25 +132,28 @@ h3 {
   transition: all 0.25s ease;
 }
 
+/* Primary (Glow CTA) */
 .btn-primary {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: white;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  color: black;
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 0 25px var(--glow-yellow);
 }
 
+/* Secondary (Glass button) */
 .btn-secondary {
   border: 1px solid var(--border);
-  background: white;
+  background: var(--glass);
+  color: var(--text-main);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--yellow);
+  color: var(--yellow);
 }
 
 /* ===============================
@@ -136,18 +162,27 @@ h3 {
 .section {
   max-width: 1100px;
   margin: auto;
-  padding: 110px 20px; /* increased spacing */
-  border-bottom: 1px solid rgba(0,0,0,0.04); /* subtle divider */
+  padding: 110px 20px;
+  position: relative;
+}
+
+/* glowing divider */
+.section::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin: 50px auto 0;
+  width: 60%;
+  background: linear-gradient(to right, transparent, var(--purple), transparent);
 }
 
 .section h2 {
-  border-left: 4px solid var(--primary);
+  border-left: 4px solid var(--yellow);
   padding-left: 12px;
   margin-bottom: 30px;
 }
 
 .section-intro {
-  color: var(--subtext);
   margin-bottom: 30px;
 }
 
@@ -161,77 +196,66 @@ h3 {
 }
 
 /* ===============================
-   CARDS (GLASSMORPHISM)
+   CARDS (NEBULA GLASS)
 ================================ */
 .card,
 .project-card {
   flex: 1 1 280px;
-  backdrop-filter: blur(12px);
-  background: var(--card);
+  background: var(--glass);
+  backdrop-filter: blur(14px);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 24px;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow);
+  transition: 0.3s ease;
   position: relative;
 }
 
+/* Glow hover */
 .card:hover,
 .project-card:hover {
-  transform: translateY(-10px) scale(1.01);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px var(--glow-yellow);
 }
 
-/* Accent line */
+/* Gradient glow border */
+.card::before,
 .project-card::before {
   content: "";
-  height: 4px;
-  width: 100%;
-  background: linear-gradient(90deg, #2563eb, #60a5fa);
   position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 18px 18px 0 0;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(120deg, var(--purple), var(--yellow));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
 }
 
 /* ===============================
    PROJECTS
 ================================ */
-.project-card p {
-  margin: 6px 0;
-}
-
-.project-card ul {
-  padding-left: 18px;
-}
-
 .project-link {
   margin-top: 12px;
   display: inline-block;
-  color: var(--primary);
-  font-weight: 500;
+  color: var(--yellow);
 }
 
 .highlight-project {
-  border: 2px solid var(--primary);
-  background: #f0f7ff;
+  border: 1px solid var(--yellow);
 }
 
 /* ===============================
    AWARDS
 ================================ */
 .award {
-  border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--yellow);
   padding-left: 14px;
   margin-bottom: 20px;
 }
 
-.cert-link {
-  color: var(--primary);
-}
-
 /* ===============================
-   CONTACT (PREMIUM CARDS)
+   CONTACT
 ================================ */
 .contact-grid {
   display: grid;
@@ -243,32 +267,23 @@ h3 {
   padding: 26px;
   border-radius: 16px;
   backdrop-filter: blur(12px);
-  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  background: var(--glass);
   border: 1px solid var(--border);
   text-align: center;
   text-decoration: none;
-  color: var(--text);
-  transition: all 0.3s ease;
+  color: var(--text-main);
+  transition: 0.3s ease;
 }
 
 .contact-card i {
   font-size: 28px;
-  color: var(--primary);
+  color: var(--yellow);
   margin-bottom: 10px;
 }
 
 .contact-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-/* ===============================
-   HIGHLIGHT
-================================ */
-.highlight {
-  background: linear-gradient(135deg, #eef6ff, #f0f9ff);
-  border-radius: 16px;
-  padding: 28px;
+  box-shadow: 0 0 25px var(--glow-yellow);
 }
 
 /* ===============================
@@ -277,11 +292,11 @@ h3 {
 footer {
   text-align: center;
   padding: 30px;
-  color: var(--subtext);
+  color: var(--text-sub);
 }
 
 /* ===============================
-   SAFE ANIMATION
+   ANIMATIONS
 ================================ */
 .fade-in {
   opacity: 1;
@@ -295,24 +310,4 @@ footer {
 .js-enabled .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* ===============================
-   EXTRA POLISH (STRIPE FEEL)
-================================ */
-
-/* smoother text rendering */
-body {
-  -webkit-font-smoothing: antialiased;
-}
-
-/* subtle hover glow */
-.card:hover,
-.project-card:hover {
-  border-color: rgba(37, 99, 235, 0.2);
-}
-
-/* better spacing between cards */
-.project-card + .project-card {
-  margin-top: 10px;
 }
