@@ -25,12 +25,43 @@
 ================================ */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--bg-main);
+  background: #05070d; /* deep space */
   color: var(--text-main);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1.2px, transparent 1.2px),
+    radial-gradient(white 0.6px, transparent 0.6px);
+
+  background-size: 3px 3px, 7px 7px, 2px 2px;
+  background-position: 0 0, 50px 80px, 15px 25px;
+
+  opacity: 0.15; /* 🔥 reduced */
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.6) 0%,   /* reduced */
+    rgba(0,0,0,0.3) 40%,
+    transparent 75%
+  );
+
+  z-index: -1;
+  pointer-events: none;
 }
 
 html {
@@ -45,16 +76,6 @@ p {
   color: var(--text-sub);
 }
 
-/* 🌌 Nebula overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 70% 80%, rgba(255, 216, 77, 0.12), transparent 50%),
-    radial-gradient(circle at 30% 40%, rgba(106, 0, 255, 0.15), transparent 50%);
-  z-index: -1;
-}
 
 /* ===============================
    CANVAS BACKGROUND
@@ -66,7 +87,12 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -2;
+
+  /* 🎯 tuned for nebula look */
+  filter: blur(3px) contrast(140%) saturate(140%);
 }
+
+
 
 /* ===============================
    HERO (NEBULA STYLE)
