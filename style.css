@@ -89,7 +89,7 @@ p {
   z-index: -2;
 
   /* 🎯 tuned for nebula look */
-  filter: blur(3px) contrast(140%) saturate(140%);
+  filter: blur(2px) contrast(150%) saturate(140%);
 }
 
 
