@@ -36,17 +36,17 @@ body::after {
   inset: 0;
 
   background-image:
-    radial-gradient(white 1px, transparent 1px),
-    radial-gradient(white 1.2px, transparent 1.2px),
-    radial-gradient(white 0.6px, transparent 0.6px);
+    radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,0.4) 1px, transparent 1px);
 
-  background-size: 3px 3px, 7px 7px, 2px 2px;
-  background-position: 0 0, 50px 80px, 15px 25px;
+  background-size: 6px 6px, 12px 12px;
+  background-position: 0 0, 40px 60px;
 
-  opacity: 0.15; /* 🔥 reduced */
+  opacity: 0.08;
   z-index: -1;
   pointer-events: none;
 }
+
 
 body::before {
   content: "";
@@ -90,6 +90,7 @@ p {
 
   /* 🎯 tuned for nebula look */
   filter: blur(2px) contrast(150%) saturate(140%);
+   will-change: transform;
 }
 
 
@@ -228,7 +229,7 @@ p {
 .project-card {
   flex: 1 1 280px;
   background: var(--glass);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(6px);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 24px;
@@ -240,7 +241,7 @@ p {
 .card:hover,
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 0 30px var(--glow-yellow);
+  box-shadow: 0 0 18px var(--glow-yellow);
 }
 
 /* Gradient glow border */
@@ -292,7 +293,7 @@ p {
 .contact-card {
   padding: 26px;
   border-radius: 16px;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   background: var(--glass);
   border: 1px solid var(--border);
   text-align: center;
@@ -328,12 +329,13 @@ footer {
   opacity: 1;
 }
 
-.js-enabled .fade-in {
-  opacity: 0;
-  transform: translateY(25px);
-}
-
-.js-enabled .fade-in.visible {
+.fade-in {
   opacity: 1;
   transform: translateY(0);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Optional subtle animation instead of blocking */
+.fade-in.animate {
+  transform: translateY(12px);
 }
