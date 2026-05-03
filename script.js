@@ -58,5 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   calculateExperience();
-  
+
+  const openBtn = document.getElementById("open-about");
+const modal = document.getElementById("about-modal");
+const closeBtn = document.querySelector(".close-btn");
+
+if (openBtn && modal) {
+  openBtn.addEventListener("click", () => {
+    modal.classList.add("active");
+  });
+}
+
+if (closeBtn && modal) {
+  closeBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+}
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("active");
+  }
+});
+
 });
