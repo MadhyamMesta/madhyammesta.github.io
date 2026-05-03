@@ -54,23 +54,33 @@ const material = new THREE.ShaderMaterial({
     }
 
     void main(){
-      vec2 uv = gl_FragCoord.xy / resolution.xy;
+     vec2 uv = gl_FragCoord.xy / resolution.xy;
       uv = uv * 2.0 - 1.0;
       uv.x *= resolution.x / resolution.y;
+      
+      // 🔥 break grid alignment
+      uv += 0.2 * vec2(
+        sin(uv.y * 3.0 + time * 0.2),
+        cos(uv.x * 3.0 + time * 0.2)
+      );
+
     
       float t = time * 0.08;
     
       vec2 q = vec2(
-        fbm(uv * 2.0 + t),
-        fbm(uv * 2.0 - t)
+        fbm(uv * 1.5 + t),
+        fbm(uv * 1.5 - t)
       );
+      
+      uv += q * 0.4;
+
 
       vec2 r = vec2(
         fbm(uv * 3.0 + q + t),
         fbm(uv * 3.0 + q - t)
       );
     
-      float f = fbm(uv * 4.0 + r);
+      float f = fbm(uv * 2.5 + r);
     
       vec3 purple = vec3(0.18, 0.0, 0.45);
       vec3 blue   = vec3(0.0, 0.25, 0.7);
@@ -79,7 +89,7 @@ const material = new THREE.ShaderMaterial({
       vec3 col = mix(purple, blue, f);
       col = mix(col, yellow, pow(f, 3.5));
     
-      float mask = smoothstep(0.25, 0.85, f);
+      float mask = smoothstep(0.15, 0.95, f);
       col *= mask;
     
       col *= 1.3;
