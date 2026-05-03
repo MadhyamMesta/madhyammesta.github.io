@@ -371,6 +371,19 @@ footer {
 }
 
 /* ===============================
+   JS-ENABLED ANIMATION (IMPORTANT)
+================================ */
+.js-enabled .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.js-enabled .fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===============================
    MODAL BACKDROP
 ================================ */
 .modal {
