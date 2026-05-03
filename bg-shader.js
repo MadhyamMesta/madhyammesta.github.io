@@ -4,6 +4,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.Camera();
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
 
+
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const uniforms = {
