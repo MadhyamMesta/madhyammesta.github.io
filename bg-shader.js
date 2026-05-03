@@ -45,9 +45,14 @@ const material = new THREE.ShaderMaterial({
       float v = 0.0;
       float a = 0.5;
     
+      mat2 rot = mat2(
+        0.8, -0.6,
+        0.6,  0.8
+      );
+      
       for(int i=0;i<6;i++){
         v += a * noise(p);
-        p *= 2.0;
+        p = rot * p * 2.0; // 🔥 rotation added
         a *= 0.5;
       }
       return v;
