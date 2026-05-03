@@ -137,7 +137,7 @@ p {
 }
 
 .intro {
-  max-width: 6400px;
+  max-width: 640px;
   margin: 20px auto;
   line-height: 1.6;
 }
@@ -448,4 +448,37 @@ footer {
 
 .close-btn:hover {
   color: var(--yellow);
+}
+
+/* ===============================
+   ABOUT IMAGE FIX
+================================ */
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  display: block;
+
+  /* remove any weird rendering */
+  object-fit: contain;
+
+  /* subtle glow */
+  box-shadow: 0 0 20px rgba(106, 0, 255, 0.2);
+}
+
+.image-caption {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-sub);
+  margin-top: 6px;
 }
