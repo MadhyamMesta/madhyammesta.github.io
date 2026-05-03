@@ -12,7 +12,8 @@
   --orange: #ff9a00;
 
   --text-main: #ffffff;
-  --text-sub: #aab0c0;
+  --text-sub: rgba(255, 255, 255, 0.78);
+  --text-muted: rgba(255, 255, 255, 0.55);
 
   --glass: rgba(255, 255, 255, 0.05);
   --border: rgba(255, 255, 255, 0.08);
@@ -25,9 +26,11 @@
 ================================ */
 body {
   margin: 0;
-  background: #05070d; /* deep space */
-  color: var(--text-main);
+  background: #05070d;
+  color: var(--text-sub);
   overflow-x: hidden;
+  line-height: 1.65;
+  letter-spacing: 0.2px;
 }
 
 body::after {
@@ -69,13 +72,13 @@ html {
 }
 
 h1, h2, h3 {
-  color: var(--text-main);
-   margin-top: 0; 
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0; 
 }
 
 p {
-  color: var(--text-sub);
-   margin: 6px 0;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 6px 0;
 }
 
 
@@ -233,6 +236,7 @@ p {
 ================================ */
 .card,
 .project-card {
+  color: rgba(255, 255, 255, 0.82);
   flex: 1 1 280px;
   background: var(--glass);
   backdrop-filter: blur(6px);
