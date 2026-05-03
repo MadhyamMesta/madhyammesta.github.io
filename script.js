@@ -29,4 +29,34 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(el);
   });
 
+   function calculateExperience() {
+    const startDate = new Date("2022-08-01");
+    const today = new Date();
+
+    let years = today.getFullYear() - startDate.getFullYear();
+    let months = today.getMonth() - startDate.getMonth();
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    let text = "";
+
+    if (years > 0) {
+      text += `${years} yr${years > 1 ? "s" : ""} `;
+    }
+
+    if (months > 0) {
+      text += `${months} mo${months > 1 ? "s" : ""}`;
+    }
+
+    const el = document.getElementById("exp-duration");
+    if (el) {
+      el.textContent = `(${text.trim()})`;
+    }
+  }
+
+  calculateExperience();
+  
 });
